@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.enw.games.snake.engine.Snake.SnakeDirection;
+import com.enw.games.snake.engine.exceptions.InvalidBoardSizeException;
 
 public class Game {
 	

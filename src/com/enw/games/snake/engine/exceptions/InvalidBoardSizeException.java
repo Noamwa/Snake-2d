@@ -1,4 +1,4 @@
-package com.enw.games.snake.engine;
+package com.enw.games.snake.engine.exceptions;
 
 public class InvalidBoardSizeException extends Exception {
 	
