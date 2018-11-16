@@ -37,12 +37,11 @@ public class Game {
 		this.initSnake();
 		this.generateFood();
 		this.status = GameStatus.READY;
-		
 	}
 	
 	private void initSnake() {
 		List<SnakePart> initialSnakeBody = new ArrayList<>();
-		for(int i = 0; i < INITIAL_SNAKE_SIZE; i++) {
+		for(int i = 2; i < INITIAL_SNAKE_SIZE + 2; i++) { /// might be a problem i = 0
 			SnakePart snakePart = new SnakePart(i, 2);
 			if (i == INITIAL_SNAKE_SIZE - 1){
 				snakePart.setHead(true);
@@ -52,6 +51,14 @@ public class Game {
 		snake.setDirection(SnakeDirection.RIGHT);
 	}
 	
+	public Snake getSnake() {
+		return snake;
+	}
+
+	public Position getFoodPosition() {
+		return foodPosition;
+	}
+
 	private void generateFood() {
 		
 		Set<Position> snakePartsPositions = this.snake.getBody().stream()
@@ -66,7 +73,6 @@ public class Game {
 		Random random = new Random();
 		this.foodPosition = emptyPositions.get(random.nextInt(emptyPositions.size()));
 	}
-	
 	public static enum GameStatus {
 		UNINTIALIZED, READY, ACTIVE, GAME_OVER, ARCHIVED;
 	}

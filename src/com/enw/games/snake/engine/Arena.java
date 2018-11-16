@@ -11,7 +11,7 @@ public class Arena {
 		return board;
 	}
 	public void initSquareArena(int size){
-		this.board = new ArrayList<Tile>();
+		this.board = new ArrayList<>();
 		
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
