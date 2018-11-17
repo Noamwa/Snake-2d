@@ -1,4 +1,4 @@
-package com.enw.games.snake.consoleUI;
+package com.enw.games.snake.gui;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

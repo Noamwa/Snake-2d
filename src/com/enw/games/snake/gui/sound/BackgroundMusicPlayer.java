@@ -1,4 +1,4 @@
-package com.enw.games.snake.consoleUI.sounds;
+package com.enw.games.snake.gui.sound;
 
 import java.io.BufferedInputStream;
 import java.io.File;
