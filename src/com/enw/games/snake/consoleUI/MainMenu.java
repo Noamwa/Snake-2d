@@ -14,23 +14,8 @@ public class MainMenu {
 			"3) Load game", 
 			"4) Exit"));
 
-	public void printMenu() {
-		
-		ScreenUI screenUI = ScreenUI.getInstance();
-//		System.out.println("             ____\r\n" + "  The       / . .\\\r\n" + "  Amazing   \\  ---<\r\n"
-//				+ "  Snake!     \\  /\r\n" + "   __________/ /\r\n" + "-=:___________/\n");
-//		screenUI.print("             ____\r\n" + 
-//				"  The       / . .\\\r\n" + 
-//				"  Amazing   \\  ---<\r\n" + 
-//				"  Snake!     \\  /\r\n" + 
-//				"   __________/ /\r\n" + 
-//				"-=:___________/\r\n" + 
-//				"");
-
-		screenUI.print("-- Main Menu --\n");
-		for (String option : menuOptions) {
-			screenUI.print(option);
-		}
+	public void displayManu() {
+	
 	}
 
 	public Integer getSelectionFromUser() {

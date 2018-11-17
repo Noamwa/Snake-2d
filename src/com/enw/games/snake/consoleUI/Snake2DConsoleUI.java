@@ -22,8 +22,7 @@ public class Snake2DConsoleUI {
 	}
 
 	public void start() {
-		ScreenUI.getInstance().startScreen();
-		this.mainMenu.printMenu();
+		this.mainMenu.displayManu();
 		this.gameSoundsManager.playBackgroudMusic(DEFAULT_GAME_SOUND_PATH);
 		Integer selection = this.mainMenu.getSelectionFromUser();
 		switch (selection) {
@@ -34,10 +33,10 @@ public class Snake2DConsoleUI {
 			gameViewInitializer.printInitializedBoard(gameInitResult);
 			break;
 		case 2:
-			System.out.println("high score");
+			// TODO
 			break;
 		case 3:
-			System.out.println("loading ..");
+			// TODO
 			break;
 		case 4:
 			return;
