@@ -11,6 +11,7 @@ import com.enw.games.snake.engine.exceptions.InvalidBoardSizeException;
 
 public class Game {
 	
+	private static final int MAX_BOARD_SIZE = 100;
 	private static final int MIN_BOARD_SIZE = 20;
 	private static final int INITIAL_SNAKE_SIZE = 4;
 	
@@ -23,6 +24,18 @@ public class Game {
 		this.arena = new Arena();
 		this.snake = new Snake();
 		this.status = GameStatus.UNINTIALIZED;
+	}	
+	
+	public Arena getArena() {
+		return arena;
+	}
+
+	public Snake getSnake() {
+		return snake;
+	}
+
+	public Position getFoodPosition() {
+		return foodPosition;
 	}
 	
 	public void initGame(int n) throws InvalidBoardSizeException {
@@ -33,6 +46,9 @@ public class Game {
 		if(n < MIN_BOARD_SIZE){
 			throw new InvalidBoardSizeException("Invalid board size, minimum is: " + MIN_BOARD_SIZE);
 		}
+		if(n > MAX_BOARD_SIZE){
+			throw new InvalidBoardSizeException("Invalid board size, maximum is: " + MAX_BOARD_SIZE);
+		}
 		arena.initSquareArena(n);
 		this.initSnake();
 		this.generateFood();
@@ -42,29 +58,22 @@ public class Game {
 	private void initSnake() {
 		List<SnakePart> initialSnakeBody = new ArrayList<>();
 		for(int i = 2; i < INITIAL_SNAKE_SIZE + 2; i++) { /// might be a problem i = 0
-			SnakePart snakePart = new SnakePart(i, 2);
-			if (i == INITIAL_SNAKE_SIZE - 1){
+			SnakePart snakePart = new SnakePart(2, i);
+			if (i == INITIAL_SNAKE_SIZE + 1){
 				snakePart.setHead(true);
 			}
 			initialSnakeBody.add(snakePart);
 		}
 		snake.setDirection(SnakeDirection.RIGHT);
+		this.snake.setBody(initialSnakeBody);
 	}
 	
-	public Snake getSnake() {
-		return snake;
-	}
-
-	public Position getFoodPosition() {
-		return foodPosition;
-	}
-
 	private void generateFood() {
 		
 		Set<Position> snakePartsPositions = this.snake.getBody().stream()
 											.map(snakePart -> snakePart.getPosition())
 											.collect(Collectors.toSet());
-		
+
 		List<Position> emptyPositions = this.arena.getBoard().stream()
 											.filter(tile -> !tile.isWall())
 											.map(tile -> tile.getPosition())

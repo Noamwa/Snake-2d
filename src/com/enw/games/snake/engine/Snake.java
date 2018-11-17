@@ -6,6 +6,7 @@ public class Snake {
 	private List<SnakePart> body;
 	private SnakeDirection direction;
 
+	
 	public List<SnakePart> getBody() {
 		return body;
 	}

@@ -1,7 +1,7 @@
 package com.enw.games.snake.engine;
 
 public class SnakePart {
-	
+
 	private Position position;
 	private boolean isHead;
 	
@@ -23,5 +23,10 @@ public class SnakePart {
 
 	public void setHead(boolean isHead) {
 		this.isHead = isHead;
+	}
+
+	@Override
+	public String toString() {
+		return "SnakePart [position=" + position + ", isHead=" + isHead + "]";
 	}
 }

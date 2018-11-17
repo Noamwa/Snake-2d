@@ -18,7 +18,7 @@ public class Snake2DController {
 		catch (InvalidBoardSizeException e) {
 			return new GameInitResult(false, e.getMessage());
 		}
-		return new GameInitResult(true, game.getSnake(), game.getFoodPosition());
+		return new GameInitResult(true, game.getArena(), game.getSnake(), game.getFoodPosition());
 	}
 	
 }

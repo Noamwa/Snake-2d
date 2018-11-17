@@ -6,47 +6,54 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-/* 1) new game
-	 2) view high score
-	 3) load game
-	 4) exit 
-	 */
-
 public class MainMenu {
 
 	private List<String> menuOptions = new ArrayList<>(Arrays.asList(
 			"1) Start new game", 
-			"2) View high-score", 
+			"2) View High-score", 
 			"3) Load game", 
-			"4) Exit"
-			));
-	
-	
+			"4) Exit"));
+
 	public void printMenu() {
-		System.out.println("-- Main Menu --");
+		
+		ScreenUI screenUI = ScreenUI.getInstance();
+//		System.out.println("             ____\r\n" + "  The       / . .\\\r\n" + "  Amazing   \\  ---<\r\n"
+//				+ "  Snake!     \\  /\r\n" + "   __________/ /\r\n" + "-=:___________/\n");
+//		screenUI.print("             ____\r\n" + 
+//				"  The       / . .\\\r\n" + 
+//				"  Amazing   \\  ---<\r\n" + 
+//				"  Snake!     \\  /\r\n" + 
+//				"   __________/ /\r\n" + 
+//				"-=:___________/\r\n" + 
+//				"");
+
+		screenUI.print("-- Main Menu --\n");
 		for (String option : menuOptions) {
-			System.out.println(option);
+			screenUI.print(option);
 		}
 	}
-	
-	public int getSelectionFromUser() {
-		
+
+	public Integer getSelectionFromUser() {
+
+		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
-		int selection;
 		
-		while (true) {
+		boolean validSelection = false;
+		Integer selection = null;
+
+		while (!validSelection) {
 			try {
 				selection = scan.nextInt();
 				if (selection >= 1 && selection <= 4) {
-					return selection;
+					validSelection = true;
+				} else {
+					System.out.println("Please Enter a valid option");
 				}
-				System.out.println("Please Enter the number of option you wish to select");
-				selection = scan.nextInt();
-			}
-			catch (InputMismatchException e) {
-				System.out.println("Please Enter the number of option you wish to select");
+			} catch (InputMismatchException e) {
+				System.out.println("Please Enter a valid option");
 			}
 		}
+		return selection;
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.enw.games.snake.common;
 
+import com.enw.games.snake.engine.Arena;
 import com.enw.games.snake.engine.Position;
 import com.enw.games.snake.engine.Snake;
 
@@ -9,16 +10,18 @@ public class GameInitResult {
 	private String error;
 	private Snake snake;
 	private Position foodPosition;
+	private Arena arena;
 	
 	
 	public GameInitResult(boolean success, String error) {
 		this.success = success;
 		this.error = error;
 	}
-	public GameInitResult(boolean success, Snake snake, Position foodPosition) {
+	public GameInitResult(boolean success, Arena arena, Snake snake, Position foodPosition) {
 		this.success = success;
 		this.snake = snake;
 		this.foodPosition = foodPosition;
+		this.arena = arena;
 	}
 	
 	public boolean isSuccess() {
@@ -32,6 +35,9 @@ public class GameInitResult {
 	}
 	public void setError(String error) {
 		this.error = error;
+	}
+	public Arena getArena() {
+		return arena;
 	}
 	public Snake getSnake() {
 		return snake;

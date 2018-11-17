@@ -10,19 +10,6 @@ public class Position {
 		this.y = y;
 	}
 	
-	@Override
-	public boolean equals(Object other) {
-		
-		if(other == null){
-			return false;
-		}
-		if(!(other instanceof Position)){
-			return false;
-		}
-		Position pos = (Position)other;
-		return pos.x == this.x && pos.y == this.y;
-	}
-
 	public int getX() {
 		return x;
 	}
@@ -34,5 +21,32 @@ public class Position {
 	}
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	@Override
+	public String toString() {
+		return "(" + this.x +", " + this.y + ")";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + x;
+		result = prime * result + y;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		
+		if(other == null){
+			return false;
+		}
+		if(!(other instanceof Position)){
+			return false;
+		}
+		Position pos = (Position)other;
+		return pos.x == this.x && pos.y == this.y;
 	}
 }
