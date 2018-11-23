@@ -2,14 +2,12 @@ package com.enw.games.snake.gui;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.enw.games.snake.gui.sound.BackgroundMusicPlayer;
 import com.enw.games.snake.gui.sound.GameSoundsManager;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,7 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class MainMenu implements Initializable {
+public class MainMenuController {
 
 	private NewGameHandler newGameHandler;
 	
@@ -33,14 +31,14 @@ public class MainMenu implements Initializable {
 	@FXML
 	private Button exitGame;
 	
-	public MainMenu(NewGameHandler newGameHandler) {
+	public MainMenuController(NewGameHandler newGameHandler) {
 		this.newGameHandler = newGameHandler;
 	}
 	
 	public void display() throws IOException {
 		
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenuSample.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmls/MainMenuSample.fxml"));
 			AnchorPane pane = fxmlLoader.load();
 			
 			Stage mainStage = MainStage.getInstance().getStage();
@@ -54,20 +52,21 @@ public class MainMenu implements Initializable {
 	}
 	
 	public void handleNewGame() throws IOException {
-	
+		this.newGameHandler.display(MainStage.getInstance().getStage());
 	}
 	
 	public void exitGame() {
 		System.exit(0);
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		 File file = new File("C:\\Users\\Noam\\dev\\snake-2d\\snake-game\\resources\\theAmazingSnake.jpg");
-	     Image image = new Image(file.toURI().toString());
-	     this.theAmazingSnakeImg.setImage(image);
-	     GameSoundsManager musicPlayer = new GameSoundsManager();
-	     musicPlayer.playBackgroudMusic("C:\\Users\\Noam\\dev\\snake-2d\\snake-game\\resources\\sounds\\bg1.wav");
-	}
+//	@Override
+//	public void initialize(URL location, ResourceBundle resources) {
+//		InputStream is = getClass().getClassLoader().getResourceAsStream("/images/theAmazingSnake.jpg");
+//		File file = new File("snake-game\\resources\\theAmazingSnake.jpg");
+//		Image image = new Image(file.toURI().toString());
+//		this.theAmazingSnakeImg.setImage(image);
+//		GameSoundsManager musicPlayer = new GameSoundsManager();
+//		musicPlayer.playBackgroudMusic("C:\\Users\\Noam\\dev\\snake-2d\\snake-game\\resources\\sounds\\bg1.wav");
+//	}
 	
 }

@@ -15,11 +15,11 @@ public class Snake2DGuiApp extends Application {
 
 	private Snake2DController gameController;
 	private GameSoundsManager gameSoundsManager;
-	private MainMenu mainMenu;
+	private MainMenuController mainMenu;
 	
 	public Snake2DGuiApp() {
 		this.gameController = new Snake2DController();
-		this.mainMenu = new MainMenu(new NewGameHandler(gameController));
+		this.mainMenu = new MainMenuController(new NewGameHandler(gameController));
 	}
 	
 	public static void main(String[] args)  {  
