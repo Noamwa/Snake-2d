@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 import com.enw.games.snake.gui.sound.BackgroundMusicPlayer;
 import com.enw.games.snake.gui.sound.GameSoundsManager;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,9 +21,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainMenu implements Initializable {
-	
-	private Stage stage;
+
 	private NewGameHandler newGameHandler;
+	
 	@FXML
 	private ImageView theAmazingSnakeImg;
 	
@@ -31,26 +33,32 @@ public class MainMenu implements Initializable {
 	@FXML
 	private Button exitGame;
 	
-	
-	public void display(Stage stage, NewGameHandler newGameHandler) throws IOException {
-		
-		FXMLLoader root = new FXMLLoader(getClass().
-				getResource("MainMenuSample.fxml"));
-		this.stage = stage; ///// very bad ! can't move stage and handler to constructor
+	public MainMenu(NewGameHandler newGameHandler) {
 		this.newGameHandler = newGameHandler;
-		AnchorPane pane = root.load();
-		stage.setScene(new Scene(pane));
-		stage.show();
+	}
+	
+	public void display() throws IOException {
+		
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenuSample.fxml"));
+			AnchorPane pane = fxmlLoader.load();
+			
+			Stage mainStage = MainStage.getInstance().getStage();
+			
+			mainStage.setScene(new Scene(pane));
+			mainStage.show();
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 	public void handleNewGame() throws IOException {
-		
-		
-		
+	
 	}
 	
 	public void exitGame() {
-		System.exit(1);
+		System.exit(0);
 	}
 
 	@Override

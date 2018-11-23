@@ -20,7 +20,6 @@ public class NewGameHandler {
 	}
 	
 	public void handleNewGame(Stage stage) throws IOException {
-	
 		
 	}
 }

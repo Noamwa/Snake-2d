@@ -15,9 +15,11 @@ public class Snake2DGuiApp extends Application {
 
 	private Snake2DController gameController;
 	private GameSoundsManager gameSoundsManager;
+	private MainMenu mainMenu;
 	
 	public Snake2DGuiApp() {
 		this.gameController = new Snake2DController();
+		this.mainMenu = new MainMenu(new NewGameHandler(gameController));
 	}
 	
 	public static void main(String[] args)  {  
@@ -27,12 +29,12 @@ public class Snake2DGuiApp extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-	  
+		MainStage.getInstance().setStage(stage);
+		
 		stage.setTitle("The Amazing Snake!");
 		stage.setHeight(400);
 		stage.setWidth(700);
-		MainMenu mainMenu = new MainMenu();
-		mainMenu.display(stage, new NewGameHandler(this.gameController));
+		this.mainMenu.display();
 		
 	}
 }
