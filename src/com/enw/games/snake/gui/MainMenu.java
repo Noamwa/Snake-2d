@@ -45,7 +45,7 @@ public class MainMenu implements Initializable {
 	
 	public void handleNewGame() throws IOException {
 		
-	
+		
 		
 	}
 	
