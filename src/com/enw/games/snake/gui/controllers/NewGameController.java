@@ -1,4 +1,4 @@
-package com.enw.games.snake.gui;
+package com.enw.games.snake.gui.controllers;
 
 
 
@@ -12,6 +12,8 @@ import javax.xml.stream.events.StartDocument;
 import com.enw.games.snake.common.GameInitResult;
 import com.enw.games.snake.common.GameProperties;
 import com.enw.games.snake.controller.Snake2DController;
+import com.enw.games.snake.gui.LableWarning;
+import com.enw.games.snake.gui.MainStage;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class NewGameHandler implements Initializable {
+public class NewGameController implements Initializable {
 	
 	private Snake2DController gameController;
 	private Scene prev;
@@ -41,7 +43,7 @@ public class NewGameHandler implements Initializable {
 	
 	
 
-	public NewGameHandler(Snake2DController gameController) {
+	public NewGameController(Snake2DController gameController) {
 		this.gameController = gameController;
 	}
 	

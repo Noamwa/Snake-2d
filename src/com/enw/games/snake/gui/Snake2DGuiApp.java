@@ -1,25 +1,20 @@
 package com.enw.games.snake.gui;
 
 
-import java.net.URL;
-
 import com.enw.games.snake.controller.Snake2DController;
-import com.enw.games.snake.gui.sound.GameSoundsManager;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Snake2DGuiApp extends Application {
 
-	private static final String DEFAULT_GAME_SOUND_PATH = "sounds/bg1.wav";
-
 	private Snake2DController gameController;
-	private GameSoundsManager gameSoundsManager;
-	private MainMenuController mainMenu;
 	
 	public Snake2DGuiApp() {
 		this.gameController = new Snake2DController();
-		this.mainMenu = new MainMenuController(new NewGameHandler(gameController));
 	}
 	
 	public static void main(String[] args)  {  
@@ -34,7 +29,14 @@ public class Snake2DGuiApp extends Application {
 		stage.setTitle("The Amazing Snake!");
 		stage.setHeight(400);
 		stage.setWidth(700);
-		this.mainMenu.display();
 		
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxmls/MainMenu.fxml"));
+			AnchorPane pane = fxmlLoader.load();
+			stage.setScene(new Scene(pane));
+			stage.show();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 }
