@@ -38,11 +38,9 @@ public class MainMenuController {
 	public void display() throws IOException {
 		
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxmls/MainMenuSample.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("resources/fxmls/MainMenu.fxml"));
 			AnchorPane pane = fxmlLoader.load();
-			
 			Stage mainStage = MainStage.getInstance().getStage();
-			
 			mainStage.setScene(new Scene(pane));
 			mainStage.show();
 			
@@ -52,21 +50,10 @@ public class MainMenuController {
 	}
 	
 	public void handleNewGame() throws IOException {
-		this.newGameHandler.display(MainStage.getInstance().getStage());
+		this.newGameHandler.display();
 	}
 	
 	public void exitGame() {
 		System.exit(0);
 	}
-
-//	@Override
-//	public void initialize(URL location, ResourceBundle resources) {
-//		InputStream is = getClass().getClassLoader().getResourceAsStream("/images/theAmazingSnake.jpg");
-//		File file = new File("snake-game\\resources\\theAmazingSnake.jpg");
-//		Image image = new Image(file.toURI().toString());
-//		this.theAmazingSnakeImg.setImage(image);
-//		GameSoundsManager musicPlayer = new GameSoundsManager();
-//		musicPlayer.playBackgroudMusic("C:\\Users\\Noam\\dev\\snake-2d\\snake-game\\resources\\sounds\\bg1.wav");
-//	}
-	
 }

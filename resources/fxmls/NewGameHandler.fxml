@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.enw.games.snake.gui.NewGameHandler">
+   <children>
+      <Button fx:id="submitButton" fx:onAction="#submit" layoutX="219.0" layoutY="192.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="163.0" text="Submit" />
+      <ChoiceBox fx:id="boardSizeChoiceBox" fx:onAction="" layoutX="219.0" layoutY="126.0" prefHeight="30.0" prefWidth="163.0" />
+      <Button fx:id="backButton" fx:onAction="#goBack" layoutX="219.0" layoutY="255.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="163.0" text="Back" />
+      <Label fx:id="emptyBoardSizeWarning" layoutX="389.0" layoutY="126.0" prefHeight="30.0" prefWidth="163.0" />
+   </children>
+</AnchorPane>

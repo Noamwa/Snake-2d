@@ -16,6 +16,6 @@
          </image>
       </ImageView>
       <Button fx:id="newGameButton" layoutX="350.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleNewGame" prefHeight="30.0" prefWidth="163.0" text="Start New Game" wrapText="true" />
-      <Button fx:id="exitGameButton" layoutX="350.0" layoutY="274.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="30.0" prefWidth="163.0" text="Exit Game" />
+      <Button fx:id="exitGame" layoutX="350.0" layoutY="274.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="30.0" prefWidth="163.0" text="Exit Game" />
    </children>
 </AnchorPane>
