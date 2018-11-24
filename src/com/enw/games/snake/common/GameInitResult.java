@@ -45,5 +45,10 @@ public class GameInitResult {
 	public Position getFoodPosition() {
 		return foodPosition;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "GameInitResult [success=" + success + ", error=" + error + ", snake=" + snake + ", foodPosition="
+				+ foodPosition + ", arena=" + arena + "]";
+	}
 }

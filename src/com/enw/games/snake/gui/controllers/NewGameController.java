@@ -9,7 +9,7 @@ import com.enw.games.snake.common.GameInitResult;
 import com.enw.games.snake.common.GameProperties;
 import com.enw.games.snake.controller.Snake2DController;
 import com.enw.games.snake.gui.LabelWarning;
-import com.enw.games.snake.gui.MainStage;
+import com.enw.games.snake.gui.MainAppComponents;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,19 +33,14 @@ public class NewGameController implements Initializable {
 	@FXML
 	private Label emptyBoardSizeWarning;
 
-	private Snake2DController gameController;
 	private Scene prev;
 	
 	public NewGameController() {
-		this.prev = MainStage.getInstance().getStage().getScene();
-	}
-	
-	public void setGameController(Snake2DController gameController) {
-		this.gameController = gameController;
+		this.prev = MainAppComponents.getInstance().getStage().getScene();
 	}
 	
 	public void goBack() {
-		Stage stage = MainStage.getInstance().getStage();
+		Stage stage = MainAppComponents.getInstance().getStage();
 		stage.setScene(this.prev);
 		stage.show();
 	}
@@ -57,14 +52,16 @@ public class NewGameController implements Initializable {
 			LabelWarning.displayWarningLabel("Please enter board size", this.emptyBoardSizeWarning, 3000);
 		}
 		else {
-			GameInitResult gameInitResult = this.gameController.initGame(new GameProperties(boardSizeInput));
+			Snake2DController gameController = MainAppComponents.getInstance().getGameController();
+			GameInitResult gameInitResult = gameController.initGame(new GameProperties(boardSizeInput));
+			System.out.println(gameInitResult);
+			
+			// check if game init results is succesfull 
+			// if not - display error message
+			// else - initialize the game board
 		}
 	}
 
-	private void displayInvalidGameSizeMessage() {
-		
-	}
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		for(int i = 20; i < 100; i++ ) {

@@ -2,7 +2,7 @@ package com.enw.games.snake.gui.controllers;
 
 import java.io.IOException;
 
-import com.enw.games.snake.gui.MainStage;
+import com.enw.games.snake.gui.MainAppComponents;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +29,7 @@ public class MainMenuController {
 	public void handleNewGame() throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxmls/NewGame.fxml"));
 		AnchorPane pane = fxmlLoader.load();
-		Stage stage = MainStage.getInstance().getStage();
+		Stage stage = MainAppComponents.getInstance().getStage();
 		stage.setScene(new Scene(pane));
 		stage.show();
 	}

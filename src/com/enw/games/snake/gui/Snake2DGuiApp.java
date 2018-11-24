@@ -11,12 +11,6 @@ import javafx.stage.Stage;
 
 public class Snake2DGuiApp extends Application {
 
-	private Snake2DController gameController;
-	
-	public Snake2DGuiApp() {
-		this.gameController = new Snake2DController();
-	}
-	
 	public static void main(String[] args)  {  
         launch(args);  
     }  
@@ -24,7 +18,7 @@ public class Snake2DGuiApp extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		MainStage.getInstance().setStage(stage);
+		init(stage);
 		
 		stage.setTitle("The Amazing Snake!");
 		stage.setHeight(400);
@@ -38,5 +32,10 @@ public class Snake2DGuiApp extends Application {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+	}
+	
+	private void init(Stage stage) {
+		MainAppComponents.getInstance().setStage(stage);
+		MainAppComponents.getInstance().setGameController(new Snake2DController());
 	}
 }
