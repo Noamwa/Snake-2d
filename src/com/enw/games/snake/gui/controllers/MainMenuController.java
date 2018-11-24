@@ -27,7 +27,11 @@ public class MainMenuController {
 	}
 	
 	public void handleNewGame() throws IOException {
-		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxmls/NewGame.fxml"));
+		AnchorPane pane = fxmlLoader.load();
+		Stage stage = MainStage.getInstance().getStage();
+		stage.setScene(new Scene(pane));
+		stage.show();
 	}
 	
 	public void exitGame() {
