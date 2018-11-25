@@ -13,12 +13,12 @@ public class Snake2DController {
 		
 		this.game = new Game();
 		try {
-			game.initGame(gameProps.getBoardSize());
+			game.initGame(gameProps.getWidth(), gameProps.getHeight());
 		} 
 		catch (InvalidBoardSizeException e) {
 			return new GameInitResult(false, e.getMessage());
 		}
-		return new GameInitResult(true, game.getArena(), game.getSnake(), game.getFoodPosition());
+		return new GameInitResult(true, game);
 	}
 	
 }

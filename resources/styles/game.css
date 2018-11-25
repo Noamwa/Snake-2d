@@ -1,0 +1,9 @@
+
+#statusBar {
+	-fx-border-color: black;
+	-fx-background-color: beige;
+}
+
+#statusLabel, #scoreLabel {
+	-fx-font-weight: bold;
+}

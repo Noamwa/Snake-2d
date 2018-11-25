@@ -2,6 +2,7 @@ package com.enw.games.snake.gui;
 
 import javafx.application.Platform;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 public class LabelWarning extends Thread {
 	
@@ -15,8 +16,18 @@ public class LabelWarning extends Thread {
 		this.displayTime = displayTime;
 	}
 	
-	public static void displayWarningLabel(String warning, Label label, int displayTime) {
+	public static void warn(String warning, Label label, int displayTime) {
+		display(warning, label, displayTime, Color.ORANGE);
+	}
+	
+
+	public static void error(String warning, Label label, int displayTime) {
+		display(warning, label, displayTime, Color.ORANGERED);
+	}
+	
+	private static void display(String warning, Label label, int displayTime, Color color) {
 		LabelWarning labelWarning = new LabelWarning(warning, label, displayTime);
+		label.setTextFill(color);
 		labelWarning.start();
 	}
 	

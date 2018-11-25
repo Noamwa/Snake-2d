@@ -21,7 +21,10 @@ public class MainMenuController {
 	private Button newGameButton;
 	
 	@FXML
-	private Button exitGame;
+	private Button viewHighScoresButton;
+		
+	@FXML
+	private Button exitGameButton;
 	
 	public void handleNewGame() throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxmls/NewGame.fxml"));
@@ -29,6 +32,10 @@ public class MainMenuController {
 		Stage stage = MainAppComponents.getInstance().getStage();
 		stage.setScene(new Scene(pane));
 		stage.show();
+	}
+	
+	public void viewHighScores() {
+		
 	}
 	
 	public void exitGame() {

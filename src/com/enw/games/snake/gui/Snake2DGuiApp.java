@@ -24,8 +24,9 @@ public class Snake2DGuiApp extends Application {
 		init(stage);
 		MainAppComponents.getInstance().getSoundsManager().playBackgroundMusic("sounds/bg2.wav");
 		stage.setTitle("The Amazing Snake!");
-		stage.setHeight(400);
-		stage.setWidth(700);
+		stage.setHeight(600);
+		stage.setWidth(750);
+		stage.setResizable(false);
 		
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxmls/MainMenu.fxml"));

@@ -10,35 +10,23 @@
 	divider-color:    		#BDBDBD;
 		
 }
+
 .root {
 	-fx-background-color: default-primary-color;
 }
- .button {
+
+.button,.choice-box {
  	-fx-font: 14px "Bold";
  	-fx-text-fill: dark-primary-color;
  	-fx-background-color: accent-color;
  	-fx-background-radius: 22;
  	-fx-effect:dropshadow(one-pass-box, #00796B,14,2,0.5,0.5);
  }
- .choice-box{
- 	-fx-font: 14px "Bold";
+ 
+.choice-box > .label {
  	-fx-text-fill: dark-primary-color;
- 	-fx-background-color: accent-color;
- 	-fx-background-radius: 22;
- 	-fx-effect:dropshadow(one-pass-box, #00796B,14,2,0.5,0.5);
  }
-.choice-box .context-menu { 
-	-fx-background-color: accent-color;
-}
-.choice-box .menu-item:focused {
-	-fx-background-color: light-primary-color;
-}
-.choice-box .menu-item > .label {
-	-fx-text-fill:dark-primary-color ;
-}
- .choice-box:hover{
- 	-fx-background-color: #8BC34A;
- }
+ 
 .button:hover{
 	-fx-background-color: #8BC34A;
 }
