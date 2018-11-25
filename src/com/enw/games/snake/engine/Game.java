@@ -21,7 +21,6 @@ public class Game {
 	private Position foodPosition;
 	
 	public Game() {
-		this.arena = new Arena();
 		this.snake = new Snake();
 		this.status = GameStatus.UNINTIALIZED;
 	}	
@@ -38,18 +37,19 @@ public class Game {
 		return foodPosition;
 	}
 	
-	public void initGame(int n) throws InvalidBoardSizeException {
+	public void initGame(int xSize, int ySize) throws InvalidBoardSizeException {
 		
 		if(this.status != GameStatus.UNINTIALIZED){
 			throw new IllegalStateException("Cannot initialize an already initialized game");
 		}
-		if(n < MIN_BOARD_SIZE){
+		if(xSize < MIN_BOARD_SIZE || ySize < MIN_BOARD_SIZE){
 			throw new InvalidBoardSizeException("Invalid board size, minimum is: " + MIN_BOARD_SIZE);
 		}
-		if(n > MAX_BOARD_SIZE){
+		if(xSize > MAX_BOARD_SIZE || ySize > MAX_BOARD_SIZE){
 			throw new InvalidBoardSizeException("Invalid board size, maximum is: " + MAX_BOARD_SIZE);
 		}
-		arena.initSquareArena(n);
+		this.arena = new Arena(xSize, ySize);
+		this.arena.initArena();
 		this.initSnake();
 		this.generateFood();
 		this.status = GameStatus.READY;

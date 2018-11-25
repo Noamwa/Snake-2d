@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
+prefHeight="600.0" prefWidth="750.0" 
+xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="com.enw.games.snake.gui.controllers.GameController">
+   <children>
+      
+      <AnchorPane prefHeight="500" prefWidth="750">
+         <children>
+            <Canvas fx:id="gameCanvas" height="500" width="750"/>
+         </children>
+      </AnchorPane>
+      
+      <AnchorPane id="statusBar" fx:id="statusBar" layoutY="500" prefHeight="100" prefWidth="750">
+         <children>
+            <Label id="scoreLabel" layoutX="20" layoutY="20" prefHeight="18.0" prefWidth="104.0" text="Score: 0">
+               <font>
+                  <Font size="18" />
+               </font>
+            </Label>
+            <Label id="statusLabel" alignment="CENTER" layoutX="665" layoutY="20" prefHeight="18.0" prefWidth="62.0" text="Paused">
+               <font>
+                  <Font size="18" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      
+   </children>
+   
+   <stylesheets>
+	<URL value="@/styles/main.css" />
+	<URL value="@/styles/game.css" />
+   </stylesheets>
+   
+</AnchorPane>

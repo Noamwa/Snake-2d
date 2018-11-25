@@ -10,19 +10,25 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" 
 minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" 
-prefWidth="700.0" stylesheets="@/styles/SnakeStyle.css" 
+prefWidth="700.0" stylesheets="@/styles/main.css" 
 xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
 fx:controller="com.enw.games.snake.gui.controllers.MainMenuController">
    <children>
-      <ImageView fx:id="theAmazingSnakeImg" fitHeight="524.0" fitWidth="400.0" layoutX="150.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="theAmazingSnakeImg" 
+      			 fitHeight="524.0" 
+      			 fitWidth="400.0" 
+      			 layoutX="150.0"
+      			 layoutY="20" 
+      			 pickOnBounds="true" 
+      			 preserveRatio="true">
          <image>
             <Image url="@/images/theAmazingSnake.jpg" />
          </image>
       </ImageView>
       
       <Button fx:id="newGameButton" 
-      		  layoutX="350.0" 
-      		  layoutY="221.0" 
+      		  layoutX="280" 
+      		  layoutY="260" 
       		  mnemonicParsing="false" 
       		  onAction="#handleNewGame" 
       		  prefHeight="30.0" 
@@ -30,6 +36,23 @@ fx:controller="com.enw.games.snake.gui.controllers.MainMenuController">
       		  text="Start New Game" 
       		  wrapText="true" />
       		  
-      <Button fx:id="exitGame" layoutX="350.0" layoutY="274.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="30.0" prefWidth="163.0" text="Exit Game" />
+     <Button fx:id="viewHighScoresButton" 
+      		 layoutX="280" 
+      		 layoutY="310" 
+      		 mnemonicParsing="false" 
+      		 onAction="#viewHighScores" 
+      		 prefHeight="30.0" 
+      		 prefWidth="163.0" 
+      		 text="View Highscore" 
+      		 wrapText="true" />
+      		  		  
+      <Button fx:id="exitGameButton" 
+      		  layoutX="280" 
+      		  layoutY="360" 
+      		  mnemonicParsing="false" 
+      		  onAction="#exitGame" 
+      		  prefHeight="30.0" 
+      		  prefWidth="163.0" 
+      		  text="Exit Game" />
    </children>
 </AnchorPane>

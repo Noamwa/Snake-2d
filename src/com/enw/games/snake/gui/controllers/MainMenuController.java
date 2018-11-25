@@ -21,7 +21,10 @@ public class MainMenuController {
 	private Button newGameButton;
 	
 	@FXML
-	private Button exitGame;
+	private Button viewHighScoresButton;
+		
+	@FXML
+	private Button exitGameButton;
 	
 	public MainMenuController() {
 	}
@@ -32,6 +35,10 @@ public class MainMenuController {
 		Stage stage = MainAppComponents.getInstance().getStage();
 		stage.setScene(new Scene(pane));
 		stage.show();
+	}
+	
+	public void viewHighScores() {
+		
 	}
 	
 	public void exitGame() {

@@ -2,17 +2,27 @@ package com.enw.games.snake.common;
 
 public class GameProperties {
 	
-	private int boardSize;
+	private int width;
+	private int height;
 	
-	public GameProperties(int boardSize) {
-		this.boardSize = boardSize;
-	}
-	public int getBoardSize() {
-		return boardSize;
+	public GameProperties(int width, int height) {
+		this.width = width;
+		this.height = height;
 	}
 
-	public void setBoardSize(int boardSize) {
-		this.boardSize = boardSize;
+	public int getWidth() {
+		return width;
 	}
-	
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
 }

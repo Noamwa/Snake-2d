@@ -1,27 +1,20 @@
 package com.enw.games.snake.common;
 
-import com.enw.games.snake.engine.Arena;
-import com.enw.games.snake.engine.Position;
-import com.enw.games.snake.engine.Snake;
+import com.enw.games.snake.engine.Game;
 
 public class GameInitResult {
 	
 	private boolean success;
 	private String error;
-	private Snake snake;
-	private Position foodPosition;
-	private Arena arena;
-	
+	private Game game;
 	
 	public GameInitResult(boolean success, String error) {
 		this.success = success;
 		this.error = error;
 	}
-	public GameInitResult(boolean success, Arena arena, Snake snake, Position foodPosition) {
+	public GameInitResult(boolean success, Game game) {
 		this.success = success;
-		this.snake = snake;
-		this.foodPosition = foodPosition;
-		this.arena = arena;
+		this.game = game;
 	}
 	
 	public boolean isSuccess() {
@@ -36,19 +29,14 @@ public class GameInitResult {
 	public void setError(String error) {
 		this.error = error;
 	}
-	public Arena getArena() {
-		return arena;
+	public Game getGame() {
+		return game;
 	}
-	public Snake getSnake() {
-		return snake;
+	public void setGame(Game game) {
+		this.game = game;
 	}
-	public Position getFoodPosition() {
-		return foodPosition;
-	}
-	
 	@Override
 	public String toString() {
-		return "GameInitResult [success=" + success + ", error=" + error + ", snake=" + snake + ", foodPosition="
-				+ foodPosition + ", arena=" + arena + "]";
+		return "GameInitResult [success=" + success + ", error=" + error + ",game=" + game + "]";
 	}
 }

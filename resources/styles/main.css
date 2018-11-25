@@ -10,16 +10,23 @@
 	divider-color:    		#BDBDBD;
 		
 }
+
 .root {
 	-fx-background-color: default-primary-color;
 }
- .button {
+
+.button,.choice-box {
  	-fx-font: 14px "Bold";
  	-fx-text-fill: dark-primary-color;
  	-fx-background-color: accent-color;
  	-fx-background-radius: 22;
  	-fx-effect:dropshadow(one-pass-box, #00796B,14,2,0.5,0.5);
  }
+ 
+.choice-box > .label {
+ 	-fx-text-fill: dark-primary-color;
+ }
+ 
 .button:hover{
 	-fx-background-color: #8BC34A;
 }
