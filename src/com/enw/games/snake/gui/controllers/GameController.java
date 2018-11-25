@@ -43,6 +43,6 @@ public class GameController {
 		gc.setFill(Color.GOLD);
 		Grid.paintSnakeBodyPart(gc, this.game.getSnake().getHead().getPosition());
 		
-		// start game loop!!
+		// start game loop!! TODO
 	}
 }
