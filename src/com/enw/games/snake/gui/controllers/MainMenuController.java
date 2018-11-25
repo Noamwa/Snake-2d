@@ -23,9 +23,6 @@ public class MainMenuController {
 	@FXML
 	private Button exitGame;
 	
-	public MainMenuController() {
-	}
-	
 	public void handleNewGame() throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxmls/NewGame.fxml"));
 		AnchorPane pane = fxmlLoader.load();

@@ -1,13 +1,11 @@
 package com.enw.games.snake.gui.sound;
 
+import javafx.scene.media.AudioClip;
+
 public class GameSoundsManager {
 	
-	private BackgroundMusicPlayer backgroundMusicPlayer;
-	
-	public void playBackgroudMusic(String soundPath) {
-		this.backgroundMusicPlayer = new BackgroundMusicPlayer(soundPath);
-		this.backgroundMusicPlayer.start();
+	public static void playBackgroundMusic(String path) {
+		BackgroundMusicPlayer backgroundMusicPlayer = new BackgroundMusicPlayer(path);
+		backgroundMusicPlayer.start();
 	}
-	
-
 }

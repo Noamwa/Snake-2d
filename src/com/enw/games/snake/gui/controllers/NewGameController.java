@@ -52,6 +52,7 @@ public class NewGameController implements Initializable {
 			LabelWarning.displayWarningLabel("Please enter board size", this.emptyBoardSizeWarning, 3000);
 		}
 		else {
+			//load fxml
 			Snake2DController gameController = MainAppComponents.getInstance().getGameController();
 			GameInitResult gameInitResult = gameController.initGame(new GameProperties(boardSizeInput));
 			System.out.println(gameInitResult);

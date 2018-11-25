@@ -1,6 +1,7 @@
 package com.enw.games.snake.gui;
 
 import com.enw.games.snake.controller.Snake2DController;
+import com.enw.games.snake.gui.sound.GameSoundsManager;
 
 import javafx.stage.Stage;
 
@@ -10,6 +11,7 @@ public class MainAppComponents {
 	
 	private Stage stage;
 	private Snake2DController gameController;
+	private GameSoundsManager soundsManager;
 	
 	private MainAppComponents() { 
 	}
@@ -35,5 +37,13 @@ public class MainAppComponents {
 	
 	public void setGameController(Snake2DController snake2dController) {
 		this.gameController = snake2dController;
+	}
+	
+	public GameSoundsManager getSoundsManager() {
+		return soundsManager;
+	}
+	
+	public void setSoundsManager(GameSoundsManager soundsManager) {
+		this.soundsManager = soundsManager;
 	}
 }

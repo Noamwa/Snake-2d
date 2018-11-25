@@ -8,13 +8,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" 
-minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" 
-prefWidth="700.0" stylesheets="@/styles/SnakeStyle.css" 
-xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="com.enw.games.snake.gui.controllers.MainMenuController">
+<AnchorPane maxHeight="-Infinity"
+			maxWidth="-Infinity" 
+			minHeight="-Infinity"
+			minWidth="-Infinity"
+			prefHeight="400.0" 
+			prefWidth="700.0" 
+			stylesheets="@/styles/SnakeStyle.css" 
+			xmlns="http://javafx.com/javafx/8"
+			xmlns:fx="http://javafx.com/fxml/1" 
+			fx:controller="com.enw.games.snake.gui.controllers.MainMenuController">
    <children>
-      <ImageView fx:id="theAmazingSnakeImg" fitHeight="524.0" fitWidth="400.0" layoutX="150.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="theAmazingSnakeImg" 
+      			 fitHeight="524.0" 
+      			 fitWidth="400.0" 
+      			 layoutX="150.0"
+      			 pickOnBounds="true"
+      			 preserveRatio="true">
          <image>
             <Image url="@/images/theAmazingSnake.jpg" />
          </image>
@@ -30,6 +40,13 @@ fx:controller="com.enw.games.snake.gui.controllers.MainMenuController">
       		  text="Start New Game" 
       		  wrapText="true" />
       		  
-      <Button fx:id="exitGame" layoutX="350.0" layoutY="274.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="30.0" prefWidth="163.0" text="Exit Game" />
+      <Button fx:id="exitGame"
+      		  layoutX="350.0"
+      		  layoutY="274.0"
+      		  mnemonicParsing="false"
+      		  onAction="#exitGame"
+      		  prefHeight="30.0"
+      		  prefWidth="163.0"
+      		  text="Exit Game" />
    </children>
 </AnchorPane>
