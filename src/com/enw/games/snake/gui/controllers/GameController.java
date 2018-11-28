@@ -100,55 +100,56 @@ public class GameController {
 		SnakePart newSnakePart;
 		int newSnakePartX;
 		int newSnakePartY;
-		SnakeDirection direction;
-
-//		SnakePart tail = this.game.getSnake().getBody().get(this.game.getSnake().getBody().size() - 1);
-//		SnakePart beforeTail = this.game.getSnake().getBody().get(this.game.getSnake().getBody().size() - 2);
-		newSnakePartX = this.game.getSnake().getHead().getPosition().getX();
-		newSnakePartY = this.game.getSnake().getHead().getPosition().getY();
-
-//		if(tail.getPosition().getX() == beforeTail.getPosition().getX()) {
-//			if(tail.getPosition().getY() > beforeTail.getPosition().getY()) {
-//				direction = SnakeDirection.UP;
-//				newSnakePartY--;
-//			}
-//			else {
-//				direction = SnakeDirection.DOWN;
-//				newSnakePartY++;
-//			}
-//		}
-//		if(tail.getPosition().getY() == beforeTail.getPosition().getY()) {
-//			if(tail.getPosition().getX() > beforeTail.getPosition().getX()) {
-//				direction = SnakeDirection.LEFT;
-//				newSnakePartX--;
-//			}
-//			else {
-//				direction = SnakeDirection.RIGHT;
-//				newSnakePartX++;
-//			}
-//		}
-//		newSnakePart = new SnakePart(newSnakePartX, newSnakePartY);
-//		body.add(body.size() - 1, newSnakePart);
-
-		newSnakePartX = this.game.getSnake().getHead().getPosition().getX();
-		newSnakePartY = this.game.getSnake().getHead().getPosition().getY();
-		direction = this.game.getSnake().getDirection();
-		switch (direction) {
-		case UP:
-			newSnakePartY--;
-			break;
-		case DOWN:
-			newSnakePartY++;
-			break;
-		case RIGHT:
-			newSnakePartX++;
-			break;
-		case LEFT:
-			newSnakePartX--;
-			break;
+		
+		// try adding to tail
+		SnakePart tail = body.get(body.size() - 1);
+		SnakePart beforeTail = body.get(body.size() - 2);
+		newSnakePartX = body.get(body.size() - 1).getPosition().getX();
+		newSnakePartY = body.get(body.size() - 1).getPosition().getY();
+		if (tail.getPosition().getX() == beforeTail.getPosition().getX()) {
+			if (tail.getPosition().getY() > beforeTail.getPosition().getY()) {
+				newSnakePartY--;
+			} else {
+				newSnakePartY++;
+			}
+		}
+		if (tail.getPosition().getY() == beforeTail.getPosition().getY()) {
+			if (tail.getPosition().getX() > beforeTail.getPosition().getX()) {
+				newSnakePartX--;
+			} else {
+				newSnakePartX++;
+			}
 		}
 		newSnakePart = new SnakePart(newSnakePartX, newSnakePartY);
-		this.game.getSnake().replaceHead(newSnakePart);
+		body.add(body.size() - 1, newSnakePart);
+		
+		// try adding to head
+		if (isGameOver()) {
+			body.remove(body.size() - 1);
+			newSnakePartX = this.game.getSnake().getHead().getPosition().getX();
+			newSnakePartY = this.game.getSnake().getHead().getPosition().getY();
+			newSnakePart = new SnakePart(newSnakePartX, newSnakePartY);
+			body.add(body.size() - 1, newSnakePart);
+
+			newSnakePartX = this.game.getSnake().getHead().getPosition().getX();
+			newSnakePartY = this.game.getSnake().getHead().getPosition().getY();
+			switch (this.game.getSnake().getDirection()) {
+			case UP:
+				newSnakePartY--;
+				break;
+			case DOWN:
+				newSnakePartY++;
+				break;
+			case RIGHT:
+				newSnakePartX++;
+				break;
+			case LEFT:
+				newSnakePartX--;
+				break;
+			}
+			newSnakePart = new SnakePart(newSnakePartX, newSnakePartY);
+			this.game.getSnake().replaceHead(newSnakePart);
+		}
 	}
 
 	private void clearSnake(GraphicsContext gc) {
