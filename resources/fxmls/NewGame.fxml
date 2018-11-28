@@ -4,49 +4,56 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" 
-			maxWidth="-Infinity" 
-			minHeight="-Infinity" 
-			minWidth="-Infinity" 
-			prefHeight="400.0" 
-			prefWidth="700.0" 
-			xmlns="http://javafx.com/javafx/8" 
-			xmlns:fx="http://javafx.com/fxml/1" 
-			stylesheets="@/styles/main.css"
-			fx:controller="com.enw.games.snake.gui.controllers.NewGameController">
+<AnchorPane maxHeight="-Infinity"
+	 maxWidth="-Infinity" 
+	 minHeight="-Infinity" 
+	 minWidth="-Infinity" 
+	 prefHeight="400.0" 
+	 prefWidth="700.0" 
+	 stylesheets="@/styles/main.css" 
+	 xmlns="http://javafx.com/javafx/8" 
+	 xmlns:fx="http://javafx.com/fxml/1" 
+	 fx:controller="com.enw.games.snake.gui.controllers.NewGameController">
 			
    <children>
    	 
-      <ChoiceBox fx:id="gameBoardTypeChoiceBox" 
-      		  	 layoutX="280" 
-      		  	 layoutY="210" 
-      			 prefHeight="30.0" 
-      			 prefWidth="163.0" />
+      <ChoiceBox 
+	      fx:id="gameBoardTypeChoiceBox" 
+	      layoutX="280.0" 
+	      layoutY="150.0" 
+	      prefHeight="30.0" 
+	      prefWidth="163.0" />
       			 
-      <Button fx:id="startGameButton" 
-      		  onAction="#startNewGame" 
-      		  layoutX="280" 
-      		  layoutY="260" 
-      		  mnemonicParsing="false" 
-      		  prefHeight="30.0" 
-      		  prefWidth="163.0" 
-      		  text="Start Game" />
+      <Button 
+	      fx:id="startGameButton" 
+	      layoutX="280" layoutY="260" 
+	      mnemonicParsing="false" 
+	      onAction="#startNewGame" 
+	      prefHeight="30.0" 
+	      prefWidth="163.0" 
+	      text="Start Game" />
 
-      <Button fx:id="backButton" 
-      		  onAction="#goBack" 
-      		  layoutX="280" 
-      		  layoutY="310" 
-      		  mnemonicParsing="false" 
-      		  prefHeight="30.0" 
-      		  prefWidth="163.0" 
-      		  text="Back" />
+      <Button 
+	      fx:id="backButton" 
+	      layoutX="280" 
+	      layoutY="310" 
+	      onAction="#goBack" 
+	      prefHeight="30.0" 
+	      prefWidth="163.0" 
+	      text="Back" />
       		  
-      <Label fx:id="warningLabel" 
-      		 layoutX="260" 
-      		 layoutY="350" 
-      		 prefHeight="30.0" 
-      		 prefWidth="250" />
-      		 
+      <Label 
+	      fx:id="warningLabel" 
+	      layoutX="260" 
+	      layoutY="350" 
+	      prefHeight="30.0" 
+	      prefWidth="250" />
+	      
+      <ChoiceBox fx:id="gameDifficultyChoiceBox" 
+	      layoutX="280.0" 
+	      layoutY="207.0" 
+	      prefHeight="30.0" 
+	      prefWidth="163.0" />
    </children>
    
 </AnchorPane>
