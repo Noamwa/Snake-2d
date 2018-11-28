@@ -20,14 +20,31 @@ public class Grid {
 	public static final void paintFood(GraphicsContext gc, Position pos) {
 		gc.drawImage(Resources.FoodImage, pos.getX() * Grid.UNIT_SIZE, pos.getY() * Grid.UNIT_SIZE);
 	}
-	
+
 	public static final void paintSnakeBodyPart(GraphicsContext gc, Position pos) {
 		gc.fillRect(Grid.getSnakeX(pos), 
 				Grid.getSnakeY(pos), 
 				Grid.SNAKE_W, 
 				Grid.SNAKE_H);	
 	}
-	
+	public static final void clearSnakeBodyPart(GraphicsContext gc, Position pos) {
+		gc.clearRect(Grid.getFoodX(pos), 
+				Grid.getSnakeY(pos), 
+				Grid.UNIT_SIZE, 
+				Grid.UNIT_SIZE);	
+	}
+	public static final void clearFood(GraphicsContext gc, Position pos) {
+		gc.clearRect(Grid.getSnakeX(pos), 
+				Grid.getFoodY(pos), 
+				Grid.UNIT_SIZE, 
+				Grid.UNIT_SIZE);	
+	}
+	public static final int getFoodX(Position position) {
+		return position.getX() * UNIT_SIZE;
+	}
+	public static final int getFoodY(Position position) {
+		return position.getY() * UNIT_SIZE;
+	}
 	public static final int getSnakeX(Position position) {
 		return position.getX() * UNIT_SIZE + ((UNIT_SIZE - SNAKE_W) / 2);
 	}

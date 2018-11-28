@@ -1,13 +1,5 @@
 package com.enw.games.snake.gui.sound;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-
 import javafx.application.Platform;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.MediaPlayer;

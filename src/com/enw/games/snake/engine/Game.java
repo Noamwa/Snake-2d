@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import com.enw.games.snake.engine.Snake.SnakeDirection;
 import com.enw.games.snake.engine.exceptions.InvalidBoardSizeException;
+import com.enw.games.snake.gui.controllers.NewGameController.GameDifficulty;
 
 public class Game {
 	
@@ -19,6 +20,7 @@ public class Game {
 	private Snake snake;
 	private GameStatus status;
 	private Position foodPosition;
+	private GameDifficulty gameDifficulty;
 	
 	public Game() {
 		this.snake = new Snake();
@@ -37,6 +39,14 @@ public class Game {
 		return foodPosition;
 	}
 	
+	public GameDifficulty getGameDifficulty() {
+		return gameDifficulty;
+	}
+
+	public void setGameDifficulty(GameDifficulty gameDifficulty) {
+		this.gameDifficulty = gameDifficulty;
+	}
+
 	public void initGame(int xSize, int ySize) throws InvalidBoardSizeException {
 		
 		if(this.status != GameStatus.UNINTIALIZED){
@@ -57,18 +67,18 @@ public class Game {
 	
 	private void initSnake() {
 		List<SnakePart> initialSnakeBody = new ArrayList<>();
-		for(int i = 2; i < INITIAL_SNAKE_SIZE + 2; i++) { /// might be a problem i = 0
+		for(int i = 2; i < INITIAL_SNAKE_SIZE + 2; i++) {
 			SnakePart snakePart = new SnakePart(2, i);
 			if (i == INITIAL_SNAKE_SIZE + 1){
 				snakePart.setHead(true);
 			}
 			initialSnakeBody.add(snakePart);
 		}
-		snake.setDirection(SnakeDirection.RIGHT);
+		snake.setDirection(SnakeDirection.DOWN);
 		this.snake.setBody(initialSnakeBody);
 	}
 	
-	private void generateFood() {
+	public void generateFood() {
 		
 		Set<Position> snakePartsPositions = this.snake.getBody().stream()
 											.map(snakePart -> snakePart.getPosition())
