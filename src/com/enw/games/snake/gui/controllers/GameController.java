@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.enw.games.snake.engine.Game;
+import com.enw.games.snake.engine.Game.GameStatus;
 import com.enw.games.snake.engine.Snake;
 import com.enw.games.snake.engine.Snake.SnakeDirection;
 import com.enw.games.snake.engine.SnakePart;
@@ -19,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -33,11 +35,18 @@ public class GameController {
 	@FXML
 	private AnchorPane statusBar;
 
+	@FXML
+	private Label scoreText;
+
+	@FXML
+	private Label statusLabel;
+
 	private Game game;
 
 	public void startGame(Game game) {
 
 		this.game = game;
+		this.statusLabel.setText(this.game.getStatus().toString());
 
 		GraphicsContext gc = gameCanvas.getGraphicsContext2D();
 
@@ -51,22 +60,29 @@ public class GameController {
 
 		// paint snake
 		this.paintSnake(gc);
-
+		MainAppComponents.getInstance().getStage().getScene().setOnKeyPressed(eventHandler -> {
+			this.game.setStatus(GameStatus.ACTIVE);
+			clearSnake(gc);
+		});
 		new AnimationTimer() {
 			long initialTime = System.nanoTime();
 
 			@Override
 			public void handle(long now) {
 				if (now - initialTime >= 1000000000 / game.getGameDifficulty().getVal()) {
-					handleArrowPress();
-					clearSnake(gc);
-					game.getSnake().move(game.getSnake().getDirection());
-					paintSnake(gc);
-					if (isfoodEaten()) {
-						handleFoodConsumption(gc);
+					if (game.getStatus() == GameStatus.ACTIVE) {
+						scoreText.setText("" + game.getScore());
+						handleArrowPress();
+						clearSnake(gc);
+						game.getSnake().move(game.getSnake().getDirection());
+						paintSnake(gc);
+						if (isfoodEaten()) {
+							handleFoodConsumption(gc);
+						}
 					}
 					if (isGameOver()) {
 						System.out.println("game over");
+						GameSoundsManager.PlaySound("sounds/GameOver.wav");
 						// pop up new window :
 						// new game or main menu
 						FXMLLoader fxmlLoader = new FXMLLoader(
@@ -83,6 +99,7 @@ public class GameController {
 						this.stop();
 					}
 					initialTime = now;
+					statusLabel.setText(game.getStatus().toString());
 				}
 			}
 		}.start();
@@ -90,17 +107,19 @@ public class GameController {
 
 	private void handleFoodConsumption(GraphicsContext gc) {
 
-		GameSoundsManager.PlayfoodSound("sounds/food_eat_sfx1.wav");
+		GameSoundsManager.PlaySound("sounds/food_eat_sfx1.wav");
 		List<SnakePart> body = this.game.getSnake().getBody();
 		Grid.clearFood(gc, this.game.getFoodPosition());
-		Grid.paintFood(gc, this.game.getFoodPosition());
 		this.game.generateFood();
+		Grid.paintFood(gc, this.game.getFoodPosition());
+		this.game.incrementScore();
+
 		Grid.paintFood(gc, this.game.getFoodPosition());
 
 		SnakePart newSnakePart;
 		int newSnakePartX;
 		int newSnakePartY;
-		
+
 		// try adding to tail
 		SnakePart tail = body.get(body.size() - 1);
 		SnakePart beforeTail = body.get(body.size() - 2);
@@ -122,7 +141,7 @@ public class GameController {
 		}
 		newSnakePart = new SnakePart(newSnakePartX, newSnakePartY);
 		body.add(body.size() - 1, newSnakePart);
-		
+
 		// try adding to head
 		if (isGameOver()) {
 			body.remove(body.size() - 1);
@@ -207,7 +226,15 @@ public class GameController {
 					this.game.getSnake().setDirection(SnakeDirection.LEFT);
 				}
 				break;
+			case ("SPACE"):
+				if (this.game.getStatus() == GameStatus.PAUSED) {
+					this.game.setStatus(GameStatus.ACTIVE);
+				} else {
+					this.game.setStatus(GameStatus.PAUSED);
+				}
+				break;
 			}
+
 		});
 	}
 }

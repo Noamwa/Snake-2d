@@ -28,13 +28,13 @@ public class Grid {
 				Grid.SNAKE_H);	
 	}
 	public static final void clearSnakeBodyPart(GraphicsContext gc, Position pos) {
-		gc.clearRect(Grid.getFoodX(pos), 
+		gc.clearRect(Grid.getSnakeX(pos), 
 				Grid.getSnakeY(pos), 
-				Grid.UNIT_SIZE, 
-				Grid.UNIT_SIZE);	
+				Grid.SNAKE_W, 
+				Grid.SNAKE_H);	
 	}
 	public static final void clearFood(GraphicsContext gc, Position pos) {
-		gc.clearRect(Grid.getSnakeX(pos), 
+		gc.clearRect(Grid.getFoodX(pos), 
 				Grid.getFoodY(pos), 
 				Grid.UNIT_SIZE, 
 				Grid.UNIT_SIZE);	

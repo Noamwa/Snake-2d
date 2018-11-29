@@ -8,12 +8,16 @@
 <?import javafx.scene.control.Button?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-prefHeight="600.0" prefWidth="750.0" 
-xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="com.enw.games.snake.gui.controllers.GameController">
+<AnchorPane maxHeight="-Infinity" 
+	maxWidth="-Infinity" 
+	minHeight="-Infinity" 
+	minWidth="-Infinity" 
+	prefHeight="600.0" 
+	prefWidth="750.0" 
+	xmlns="http://javafx.com/javafx/8" 
+	xmlns:fx="http://javafx.com/fxml/1" 
+	fx:controller="com.enw.games.snake.gui.controllers.GameController">
    <children>
-      
       <AnchorPane prefHeight="500" prefWidth="750">
          <children>
             <Canvas fx:id="gameCanvas" height="500" width="750"/>
@@ -22,12 +26,17 @@ fx:controller="com.enw.games.snake.gui.controllers.GameController">
       
       <AnchorPane id="statusBar" fx:id="statusBar" layoutY="500" prefHeight="100" prefWidth="750">
          <children>
-            <Label id="scoreLabel" layoutX="20" layoutY="20" prefHeight="18.0" prefWidth="104.0" text="Score: 0">
+            <Label id="scoreLabel" layoutX="20" layoutY="20" prefHeight="18.0" prefWidth="104.0" text="Score: ">
                <font>
                   <Font size="18" />
                </font>
             </Label>
-            <Label id="statusLabel" alignment="CENTER" layoutX="665" layoutY="20" prefHeight="18.0" prefWidth="62.0" text="Paused">
+            <Label fx:id="scoreText" layoutX="75" layoutY="21" prefHeight="21" prefWidth="37" text ="">
+               <font>
+                  <Font size="18" />
+               </font>
+            </Label>
+            <Label fx:id="statusLabel" alignment="CENTER" layoutX="650" layoutY="20" prefHeight="18.0" prefWidth="80.0" text="">
                <font>
                   <Font size="18" />
                </font>

@@ -21,8 +21,11 @@ public class Game {
 	private GameStatus status;
 	private Position foodPosition;
 	private GameDifficulty gameDifficulty;
+	private int score;
 	
+
 	public Game() {
+		this.score = 0;
 		this.snake = new Snake();
 		this.status = GameStatus.UNINTIALIZED;
 	}	
@@ -45,6 +48,30 @@ public class Game {
 
 	public void setGameDifficulty(GameDifficulty gameDifficulty) {
 		this.gameDifficulty = gameDifficulty;
+	}
+	
+	public int getScore() {
+		return score;
+	}
+	
+	public void incrementScore() {
+		if(this.gameDifficulty == GameDifficulty.NORMAL) {
+			this.score += 10;
+		}
+		else if(this.gameDifficulty == GameDifficulty.NIGHTMARE) {
+			this.score += 15;
+		}
+		else {
+			this.score += 30;
+		}
+	}
+	
+	public GameStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(GameStatus status) {
+		this.status = status;
 	}
 
 	public void initGame(int xSize, int ySize) throws InvalidBoardSizeException {
@@ -93,7 +120,7 @@ public class Game {
 		this.foodPosition = emptyPositions.get(random.nextInt(emptyPositions.size()));
 	}
 	public static enum GameStatus {
-		UNINTIALIZED, READY, ACTIVE, GAME_OVER, ARCHIVED;
+		UNINTIALIZED, READY, ACTIVE, GAME_OVER, ARCHIVED, PAUSED;
 	}
 	
 }

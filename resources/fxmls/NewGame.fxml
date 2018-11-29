@@ -44,7 +44,7 @@
       		  
       <Label 
 	      fx:id="warningLabel" 
-	      layoutX="260" 
+	      layoutX="300" 
 	      layoutY="350" 
 	      prefHeight="30.0" 
 	      prefWidth="250" />
