@@ -32,6 +32,10 @@ public class Snake {
 	public SnakePart getHead() {
 		return this.body.stream().filter(part -> part.isHead()).findFirst().get();
 	}
+	
+	public Position getHeadPosition() {
+		return this.getHead().getPosition();
+	}
 	public void move(SnakeDirection direction) {
 		
 		this.direction = direction;
@@ -56,11 +60,13 @@ public class Snake {
 				break;
 		}
 	}
+	
 	public void replaceHead(SnakePart newHead) {
 		this.body.add(0, newHead);
 		this.getHead().setHead(false);
 		newHead.setHead(true);
 	}
+	
 	public static enum SnakeDirection {
 		UP, RIGHT, DOWN, LEFT;
 	}
