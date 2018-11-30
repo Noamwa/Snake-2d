@@ -6,6 +6,7 @@ public class GameSoundsManager {
 		BackgroundMusicPlayer backgroundMusicPlayer = new BackgroundMusicPlayer(path);
 		backgroundMusicPlayer.start();
 	}
+	
 	public static void playFoodSound(String path) {
 		FoodSoundPlayer foodSoundPlayer= new FoodSoundPlayer(path); 
 		foodSoundPlayer.playSound();

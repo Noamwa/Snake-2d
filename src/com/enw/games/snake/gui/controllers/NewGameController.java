@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.enw.games.snake.common.GameInitResult;
 import com.enw.games.snake.common.GameProperties;
 import com.enw.games.snake.controller.Snake2DController;
+import com.enw.games.snake.engine.Game.GameStatus;
 import com.enw.games.snake.gui.Grid;
 import com.enw.games.snake.gui.LabelWarning;
 import com.enw.games.snake.gui.MainAppComponents;
@@ -70,14 +71,12 @@ public class NewGameController implements Initializable {
 			GameProperties gameProps = createGameProperties();
 			GameInitResult gameInitResult = gameController.initGame(gameProps);
 			gameInitResult.getGame().setGameDifficulty(gameDifficulty);
-			System.out.println(gameInitResult);
 			
 			// check if game init results is successful
 			if (!gameInitResult.isSuccess()) {
 				LabelWarning.error(gameInitResult.getError(), this.warningLabel, 3000);
 				return;
 			}
-			
 			this.loadGameScreen(gameInitResult);
 		}
 	}
@@ -92,6 +91,7 @@ public class NewGameController implements Initializable {
 			stage.setScene(new Scene(pane));
 			stage.show();
 			GameController gameController = fxmlLoader.getController();
+			gameInitResult.getGame().setStatus(GameStatus.READY);
 			gameController.startGame(gameInitResult.getGame());
 		} catch (IOException e) {
 			System.out.println("Failed to load game fxml: " + e);
@@ -104,9 +104,12 @@ public class NewGameController implements Initializable {
 			this.gameBoardTypeChoiceBox.getItems().add(boardType);
 		}
 		this.gameBoardTypeChoiceBox.setValue(GameBoardType.Rectangle);
-		this.gameDifficultyChoiceBox.getItems().add(GameDifficulty.NORMAL);
-		this.gameDifficultyChoiceBox.getItems().add(GameDifficulty.NIGHTMARE);
-		this.gameDifficultyChoiceBox.getItems().add(GameDifficulty.HELL);
+		
+		for (GameDifficulty difficulty : GameDifficulty.values()) {
+			this.gameDifficultyChoiceBox.getItems().add(difficulty);
+		}
+		
+		this.gameDifficultyChoiceBox.setValue(GameDifficulty.NORMAL);
 	}
 	
 	private GameProperties createGameProperties() {
@@ -129,17 +132,18 @@ public class NewGameController implements Initializable {
 			return val;
 		}
 	}
+	
 	public static enum GameDifficulty {
 		
 		NORMAL(20),NIGHTMARE(40),HELL(70);
 		
-		private int val;
+		private int fps;
 		
 		private GameDifficulty(int val) {
-			this.val = val;
+			this.fps = val;
 		}
-		public int getVal() {
-			return val;
+		public int getFps() {
+			return fps;
 		}
 	}
 }

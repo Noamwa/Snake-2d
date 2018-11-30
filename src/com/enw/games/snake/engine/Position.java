@@ -22,7 +22,23 @@ public class Position {
 	public void setY(int y) {
 		this.y = y;
 	}
-
+	
+	public void incY() {
+		this.y++;
+	}
+	
+	public void decY() {
+		this.y--;
+	}
+	
+	public void incX() {
+		this.x++;
+	}
+	
+	public void decX() {
+		this.x--;
+	}
+	
 	@Override
 	public String toString() {
 		return "(" + this.x +", " + this.y + ")";
