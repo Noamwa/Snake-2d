@@ -1,6 +1,6 @@
 package com.enw.games.snake.engine;
 
-public class Tile {
+public class Tile implements Positionable {
 	
 	private Position position;
 	private boolean isWall;
@@ -8,7 +8,8 @@ public class Tile {
 	public Tile(int x, int y) {
 		this.position = new Position(x, y);
 	}
-
+	
+	@Override
 	public Position getPosition() {
 		return position;
 	}

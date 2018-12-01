@@ -104,9 +104,12 @@ public class NewGameController implements Initializable {
 			this.gameBoardTypeChoiceBox.getItems().add(boardType);
 		}
 		this.gameBoardTypeChoiceBox.setValue(GameBoardType.Rectangle);
-		this.gameDifficultyChoiceBox.getItems().add(GameDifficulty.NORMAL);
-		this.gameDifficultyChoiceBox.getItems().add(GameDifficulty.NIGHTMARE);
-		this.gameDifficultyChoiceBox.getItems().add(GameDifficulty.HELL);
+		
+		for (GameDifficulty difficulty : GameDifficulty.values()) {
+			this.gameDifficultyChoiceBox.getItems().add(difficulty);
+		}
+		
+		this.gameDifficultyChoiceBox.setValue(GameDifficulty.NORMAL);
 	}
 	
 	private GameProperties createGameProperties() {
@@ -129,17 +132,18 @@ public class NewGameController implements Initializable {
 			return val;
 		}
 	}
+	
 	public static enum GameDifficulty {
 		
 		NORMAL(20),NIGHTMARE(40),HELL(70);
 		
-		private int val;
+		private int fps;
 		
 		private GameDifficulty(int val) {
-			this.val = val;
+			this.fps = val;
 		}
-		public int getVal() {
-			return val;
+		public int getFps() {
+			return fps;
 		}
 	}
 }

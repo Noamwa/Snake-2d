@@ -21,11 +21,8 @@ public class Game {
 	private GameStatus status;
 	private Position foodPosition;
 	private GameDifficulty gameDifficulty;
-	private int score;
-	
 
 	public Game() {
-		this.score = 0;
 		this.snake = new Snake();
 		this.status = GameStatus.UNINTIALIZED;
 	}	
@@ -48,22 +45,6 @@ public class Game {
 
 	public void setGameDifficulty(GameDifficulty gameDifficulty) {
 		this.gameDifficulty = gameDifficulty;
-	}
-	
-	public int getScore() {
-		return score;
-	}
-	
-	public void incrementScore() {
-		if(this.gameDifficulty == GameDifficulty.NORMAL) {
-			this.score += 10;
-		}
-		else if(this.gameDifficulty == GameDifficulty.NIGHTMARE) {
-			this.score += 15;
-		}
-		else {
-			this.score += 30;
-		}
 	}
 	
 	public GameStatus getStatus() {
@@ -101,7 +82,7 @@ public class Game {
 			}
 			initialSnakeBody.add(snakePart);
 		}
-		snake.setDirection(SnakeDirection.DOWN);
+		this.snake.setDirection(SnakeDirection.DOWN);
 		this.snake.setBody(initialSnakeBody);
 	}
 	
@@ -119,6 +100,18 @@ public class Game {
 		Random random = new Random();
 		this.foodPosition = emptyPositions.get(random.nextInt(emptyPositions.size()));
 	}
+	
+	public int getScore() {
+		
+		int snakeSize = this.getSnake().getBody().size();
+		switch (this.gameDifficulty) {
+			case NORMAL:    return snakeSize * 10;
+			case NIGHTMARE: return snakeSize * 15;	
+			case HELL:      return snakeSize * 30;
+			default: return 0;
+		}
+	}
+	
 	public static enum GameStatus {
 		UNINTIALIZED, READY, ACTIVE, GAME_OVER, ARCHIVED, PAUSED;
 	}

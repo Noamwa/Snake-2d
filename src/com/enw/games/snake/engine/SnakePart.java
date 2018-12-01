@@ -1,6 +1,6 @@
 package com.enw.games.snake.engine;
 
-public class SnakePart {
+public class SnakePart implements Positionable {
 
 	private Position position;
 	private boolean isHead;
@@ -8,7 +8,8 @@ public class SnakePart {
 	public SnakePart(int x, int y) {
 		this.position = new Position(x, y); 
 	}
-
+	
+	@Override
 	public Position getPosition() {
 		return position;
 	}
