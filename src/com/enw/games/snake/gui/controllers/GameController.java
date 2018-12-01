@@ -114,8 +114,6 @@ public class GameController {
 		Grid.paintFood(gc, this.game.getFoodPosition());
 		this.game.incrementScore();
 
-		Grid.paintFood(gc, this.game.getFoodPosition());
-
 		SnakePart newSnakePart;
 		int newSnakePartX;
 		int newSnakePartY;
@@ -168,6 +166,7 @@ public class GameController {
 			}
 			newSnakePart = new SnakePart(newSnakePartX, newSnakePartY);
 			this.game.getSnake().replaceHead(newSnakePart);
+			System.out.println("added to head -- test");
 		}
 	}
 
